@@ -10,7 +10,7 @@
   [HAProxy mailing list](mailto:haproxy@formilux.org), [HAProxy Community Slack](https://slack.haproxy.org/) or [#haproxy on FreeNode](irc://chat.freenode.net:6697/haproxy)
 
 - **Where to file issues**:  
-  [https://github.com/haproxytech/haproxy-docker-alpine/issues](https://github.com/haproxytech/haproxy-docker-alpine/issues)
+  [https://github.com/haproxytech/haproxy-docker-alpine-quic/issues](https://github.com/haproxytech/haproxy-docker-alpine-quic/issues)
 
 - **Maintained by**:  
   [HAProxy Technologies](https://github.com/haproxytech)
@@ -19,10 +19,10 @@
   [`amd64`](https://hub.docker.com/r/amd64/haproxy/)
 
 - **Image updates**:  
-  [commits to `haproxytech/haproxy-docker-alpine`](https://github.com/haproxytech/haproxy-docker-alpine/commits/main), [top level `haproxytech/haproxy-docker-alpine` image folder](https://github.com/haproxytech/haproxy-docker-alpine)
+  [commits to `haproxytech/haproxy-docker-alpine-quic`](https://github.com/haproxytech/haproxy-docker-alpine-quic/commits/main), [top level `haproxytech/haproxy-docker-alpine-quic` image folder](https://github.com/haproxytech/haproxy-docker-alpine-quic)
 
 - **Source of this description**:  
-  [README.md](https://github.com/haproxytech/haproxy-docker-alpine/blob/main/README.md)
+  [README.md](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/README.md)
 
 # What is HAProxy?
 
