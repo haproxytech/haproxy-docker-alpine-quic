@@ -1,8 +1,8 @@
 # Supported tags and respective `Dockerfile` links
 
 -	[`2.8-dev5`, `2.8`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.8/Dockerfile)
--	[`2.7.4`, `2.7`, `latest`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.7/Dockerfile)
--	[`2.6.10`, `2.6`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.6/Dockerfile)
+-	[`2.7.5`, `2.7`, `latest`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.7/Dockerfile)
+-	[`2.6.11`, `2.6`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.6/Dockerfile)
 
 # Quick reference
 
