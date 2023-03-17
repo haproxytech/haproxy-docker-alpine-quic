@@ -81,7 +81,6 @@ RUN apk add --no-cache --virtual build-deps ca-certificates gcc libc-dev \
     apk del build-deps && \
     apk add --no-cache openssl zlib lua5.3-libs pcre2 && \
     rm -f /var/cache/apk/* && \
-    mkdir -p /etc/ld.so.conf.d && \
     echo "/lib:/usr/local/lib:/usr/lib:/opt/quictls/lib" > "/etc/ld-musl-$(uname -m).path"
 
 COPY haproxy.cfg /usr/local/etc/haproxy
