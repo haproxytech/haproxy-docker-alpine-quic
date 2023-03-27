@@ -1,13 +1,11 @@
 # Supported tags and respective `Dockerfile` links
 
--	[`2.8-dev5`, `2.8`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.8/Dockerfile)
--	[`2.7.5`, `2.7`, `latest`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.7/Dockerfile)
--	[`2.6.11`, `2.6`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.6/Dockerfile)
+-	[`2.0.31`, `2.0`](/2.0/Dockerfile)
 
 # Quick reference
 
 - **Where to get help**:  
-  [HAProxy mailing list](mailto:haproxy@formilux.org), [HAProxy Community Slack](https://slack.haproxy.org/) or [#haproxy on FreeNode](irc://chat.freenode.net:6697/haproxy)
+  [HAProxy mailing list](mailto:haproxy@formilux.org), [HAProxy Community Slack](https://slack.haproxy.org/) or [#haproxy on Libera.chat](irc://irc.libera.chat/%23haproxy)
 
 - **Where to file issues**:  
   [https://github.com/haproxytech/haproxy-docker-alpine-quic/issues](https://github.com/haproxytech/haproxy-docker-alpine-quic/issues)
@@ -16,7 +14,7 @@
   [HAProxy Technologies](https://github.com/haproxytech)
 
 - **Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
-  [`amd64`](https://hub.docker.com/r/amd64/haproxy/)
+  `linux/amd64`, `linux/arm64`, `linux/arm/v6`, `linux/arm/v7`
 
 - **Image updates**:  
   [commits to `haproxytech/haproxy-docker-alpine-quic`](https://github.com/haproxytech/haproxy-docker-alpine-quic/commits/main), [top level `haproxytech/haproxy-docker-alpine-quic` image folder](https://github.com/haproxytech/haproxy-docker-alpine-quic)
@@ -95,7 +93,7 @@ To achieve seamless reloads it is required to use `expose-fd listeners` and sock
 
 ## Enable Data Plane API
 
-[Data Plane API](https://www.haproxy.com/documentation/hapee/2-2r1/reference/dataplaneapi/) sidecar is being distributed by default in all 2.0+ images and to enable it there are a few steps required:
+[Data Plane API](https://www.haproxy.com/documentation/hapee/2-7r1/api/data-plane-api/) sidecar is being distributed by default in all 2.0+ images and to enable it there are a few steps required:
 
 1. define one or more users through `userlist`
 2. enable dataplane api process through `program api`
@@ -121,6 +119,6 @@ $ docker run -d --name my-running-haproxy --expose 5555 -v /path/to/etc/haproxy:
 
 # License
 
-View [license information](https://raw.githubusercontent.com/haproxy/haproxy/main/LICENSE) for the software contained in this image.
+View [license information](https://raw.githubusercontent.com/haproxy/haproxy/master/LICENSE) for the software contained in this image.
 
 As with all Docker images, these likely also contain other software which may be under other licenses (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
