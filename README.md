@@ -1,6 +1,6 @@
-# Supported tags and respective `Dockerfile` links
-
--	[`2.0.31`, `2.0`](/2.0/Dockerfile)
+-	[`2.8-dev5`, `2.8`](/2.8/Dockerfile)
+-	[`2.7.5`, `2.7`](/2.7/Dockerfile)
+-	[`2.6.11`, `2.6`](/2.6/Dockerfile)
 
 # Quick reference
 
