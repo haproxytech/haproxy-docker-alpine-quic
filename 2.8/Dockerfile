@@ -65,6 +65,7 @@ RUN apk add --no-cache --virtual build-deps ca-certificates gcc libc-dev \
                             USE_LUA=1 LUA_LIB=/usr/lib/lua5.3 LUA_INC=/usr/include/lua5.3 \
                             USE_PROMEX=1 USE_SLZ=1 \
                             SSL_INC=/opt/quictls/include SSL_LIB=/opt/quictls/lib USE_QUIC=1 \
+                            LDFLAGS="-L/opt/quictls/lib -Wl,-rpath,/opt/quictls/lib" \
                             all && \
     make -C /tmp/haproxy TARGET=linux2628 install-bin install-man && \
     ln -s /usr/local/sbin/haproxy /usr/sbin/haproxy && \
