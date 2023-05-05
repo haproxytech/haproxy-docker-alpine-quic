@@ -19,6 +19,14 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
+      - name: Login to Container Registry
+        id: login
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -69,6 +77,9 @@ jobs:
             ${{ env.DOCKER_IMAGE }}:latest
             ${{ env.DOCKER_IMAGE }}:${{ env.BUILD_BRANCH }}
             ${{ env.DOCKER_IMAGE }}:${{ env.BUILD_VER }}
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ env.BUILD_BRANCH }}
+            ghcr.io/${{ github.repository }}:${{ env.BUILD_VER }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
 
@@ -93,6 +104,8 @@ jobs:
           tags: |
             ${{ env.DOCKER_IMAGE }}:${{ env.BUILD_BRANCH }}
             ${{ env.DOCKER_IMAGE }}:${{ env.BUILD_VER }}
+            ghcr.io/${{ github.repository }}:${{ env.BUILD_BRANCH }}
+            ghcr.io/${{ github.repository }}:${{ env.BUILD_VER }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
 
