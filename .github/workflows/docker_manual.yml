@@ -13,14 +13,14 @@ jobs:
       STABLE_BRANCH: "2.7"
     steps:
       - name: Login to Docker Hub
-        id: login
+        id: login_docker
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       - name: Login to Container Registry
-        id: login
+        id: login_ghcr
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
