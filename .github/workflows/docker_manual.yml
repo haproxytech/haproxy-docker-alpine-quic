@@ -107,6 +107,8 @@ jobs:
           tags: |
             ${{ env.DOCKER_IMAGE }}:${{ env.BUILD_BRANCH }}
             ${{ env.DOCKER_IMAGE }}:${{ env.BUILD_VER }}
+            ghcr.io/${{ github.repository }}:${{ env.BUILD_BRANCH }}
+            ghcr.io/${{ github.repository }}:${{ env.BUILD_VER }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
 
