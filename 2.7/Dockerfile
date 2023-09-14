@@ -9,10 +9,10 @@ RUN cd "${GOPATH}/src/github.com/haproxytech/dataplaneapi" && \
     make build && \
     cp build/dataplaneapi /dataplaneapi
 
-FROM alpine:3.17 AS openssl-builder
+FROM alpine:3.18 AS openssl-builder
 
-ENV OPENSSL_SHA256 4e23619f73688144f2cd808e9567504c3bf10cb67ad9551280530fd54ca913e1
-ENV OPENSSL_URL https://github.com/quictls/openssl/archive/refs/tags/OpenSSL_1_1_1u-quic1.tar.gz
+ENV OPENSSL_SHA256 1651412ec136a693fcc84c77df664ca0dc0495eab2785afa2c7ba064a00fb1b6
+ENV OPENSSL_URL https://github.com/quictls/openssl/archive/refs/tags/openssl-3.1.2-quic1.tar.gz
 
 RUN apk add --no-cache curl build-base make autoconf automake gcc libc-dev linux-headers && \
     curl -sfSL "${OPENSSL_URL}" -o openssl.tar.gz && \
@@ -25,7 +25,7 @@ RUN apk add --no-cache curl build-base make autoconf automake gcc libc-dev linux
     make install && \
     rm -rf /tmp/openssl
 
-FROM alpine:3.17
+FROM alpine:3.18
 
 MAINTAINER Dinko Korunic <dkorunic@haproxy.com>
 
