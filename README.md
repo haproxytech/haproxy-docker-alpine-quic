@@ -4,7 +4,7 @@
 -	[`2.9.0`, `2.9`, `latest`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.9/Dockerfile)
 -	[`2.8.5`, `2.8`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.8/Dockerfile)
 -	[`2.7.11`, `2.7`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.7/Dockerfile)
--	[`2.6.15`, `2.6`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.6/Dockerfile)
+-	[`2.6.16`, `2.6`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.6/Dockerfile)
 
 # Quick reference
 
