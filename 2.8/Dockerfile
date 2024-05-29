@@ -1,4 +1,4 @@
-FROM golang:alpine3.18 AS dataplaneapi-builder
+FROM golang:alpine3.20 AS dataplaneapi-builder
 
 ENV DATAPLANE_MINOR 2.9.3
 ENV DATAPLANE_URL https://github.com/haproxytech/dataplaneapi.git
@@ -9,10 +9,9 @@ RUN apk add --no-cache ca-certificates git make && \
     git checkout "v${DATAPLANE_MINOR}" && \
     make build && cp build/dataplaneapi /dataplaneapi
 
-FROM alpine:3.18 AS openssl-builder
+FROM alpine:3.20 AS openssl-builder
 
-ENV OPENSSL_SHA256 1651412ec136a693fcc84c77df664ca0dc0495eab2785afa2c7ba064a00fb1b6
-ENV OPENSSL_URL https://github.com/quictls/openssl/archive/refs/tags/openssl-3.1.4-quic1.tar.gz
+ENV OPENSSL_URL https://github.com/quictls/openssl/archive/refs/tags/openssl-3.1.5-quic1.tar.gz
 
 RUN apk add --no-cache curl build-base make autoconf automake gcc libc-dev linux-headers && \
     curl -sfSL "${OPENSSL_URL}" -o openssl.tar.gz && \
@@ -25,7 +24,7 @@ RUN apk add --no-cache curl build-base make autoconf automake gcc libc-dev linux
     make install && \
     rm -rf /tmp/openssl
 
-FROM alpine:3.18
+FROM alpine:3.20
 
 MAINTAINER Dinko Korunic <dkorunic@haproxy.com>
 
@@ -36,7 +35,7 @@ LABEL Version 2.8.9
 LABEL RUN /usr/bin/docker -d IMAGE
 
 ENV HAPROXY_BRANCH 2.8
-ENV HAPROXY_MINOR 2.8.9
+ENV HAPROXY_MINOR 2.8.9-old
 ENV HAPROXY_SHA256 7a821478f36f847607f51a51e80f4f890c37af4811d60438e7f63783f67592ff
 ENV HAPROXY_SRC_URL http://www.haproxy.org/download
 

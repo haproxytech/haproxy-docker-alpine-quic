@@ -1,4 +1,4 @@
-FROM golang:alpine3.18 AS dataplaneapi-builder
+FROM golang:alpine3.20 AS dataplaneapi-builder
 
 ENV DATAPLANE_MINOR 2.9.3
 ENV DATAPLANE_URL https://github.com/haproxytech/dataplaneapi.git
@@ -9,10 +9,9 @@ RUN apk add --no-cache ca-certificates git make && \
     git checkout "v${DATAPLANE_MINOR}" && \
     make build && cp build/dataplaneapi /dataplaneapi
 
-FROM alpine:3.18 AS openssl-builder
+FROM alpine:3.20 AS openssl-builder
 
-ENV OPENSSL_SHA256 1651412ec136a693fcc84c77df664ca0dc0495eab2785afa2c7ba064a00fb1b6
-ENV OPENSSL_URL https://github.com/quictls/openssl/archive/refs/tags/openssl-3.1.4-quic1.tar.gz
+ENV OPENSSL_URL https://github.com/quictls/openssl/archive/refs/tags/openssl-3.1.5-quic1.tar.gz
 
 RUN apk add --no-cache curl build-base make autoconf automake gcc libc-dev linux-headers && \
     curl -sfSL "${OPENSSL_URL}" -o openssl.tar.gz && \
@@ -25,19 +24,19 @@ RUN apk add --no-cache curl build-base make autoconf automake gcc libc-dev linux
     make install && \
     rm -rf /tmp/openssl
 
-FROM alpine:3.18
+FROM alpine:3.20
 
 MAINTAINER Dinko Korunic <dkorunic@haproxy.com>
 
 LABEL Name HAProxy
 LABEL Release Community Edition
 LABEL Vendor HAProxy
-LABEL Version 2.7.12
+LABEL Version 3.1.0
 LABEL RUN /usr/bin/docker -d IMAGE
 
-ENV HAPROXY_BRANCH 2.7
-ENV HAPROXY_MINOR 2.7.12
-ENV HAPROXY_SHA256 471d42524049b37b5fc79093ac26911a838c2c67a18bd2f8d01efd48a83a362c
+ENV HAPROXY_BRANCH 3.1
+ENV HAPROXY_MINOR 3.1.0-old
+ENV HAPROXY_SHA256 5aad97416216d2cd9dd212eb674839c40cd387f60fbc4b13d7ea3f1e5664a814
 ENV HAPROXY_SRC_URL http://www.haproxy.org/download
 
 ENV DATAPLANE_MINOR 2.9.3
@@ -54,7 +53,7 @@ RUN apk add --no-cache ca-certificates && \
     apk add --no-cache --virtual build-deps gcc libc-dev \
     linux-headers lua5.4-dev make openssl openssl-dev pcre2-dev tar \
     zlib-dev curl shadow && \
-    curl -sfSL "${HAPROXY_SRC_URL}/${HAPROXY_BRANCH}/src/haproxy-${HAPROXY_MINOR}.tar.gz" -o haproxy.tar.gz && \
+    curl -sfSL "${HAPROXY_SRC_URL}/${HAPROXY_BRANCH}/src/devel/haproxy-${HAPROXY_MINOR}.tar.gz" -o haproxy.tar.gz && \
     echo "$HAPROXY_SHA256 *haproxy.tar.gz" | sha256sum -c - && \
     groupadd "$HAPROXY_GID" && \
     useradd -g "$HAPROXY_GID" "$HAPROXY_UID" && \
