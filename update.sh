@@ -56,6 +56,14 @@ if [ -z "${DATAPLANE_MINOR}" ]; then
     exit 1
 fi
 
+DATAPLANE_SRC_URL="https://api.github.com/repos/haproxytech/dataplaneapi/releases"
+DATAPLANE_V2_MINOR=$(curl -sfSL "$DATAPLANE_SRC_URL" | \
+    grep '"tag_name":.*"v2' | \
+    sed -E 's/.*"v?([^"]+)".*/\1/' | \
+    sort -V | \
+    tail -1
+)
+
 OPENSSL_SRC_URL="https://api.github.com/repos/quictls/openssl/releases"
 OPENSSL_MINOR=$(curl -sfSL "$OPENSSL_SRC_URL" | \
     grep '"tag_name":' | \
@@ -74,5 +82,6 @@ sed -r -i -e "s!^(ENV HAPROXY_SRC_URL) .*!\1 ${HAPROXY_SRC_URL}!;
             s!^(LABEL Version) .*!\1 ${HAPROXY_MINOR}!;
             s!^(ENV HAPROXY_SHA256) .*!\1 ${HAPROXY_SHA256}!
             s!^(ENV DATAPLANE_MINOR) .*!\1 ${DATAPLANE_MINOR}!
+            s!^(ENV DATAPLANE_V2_MINOR) .*!\1 ${DATAPLANE_V2_MINOR}!
             s!^(ENV OPENSSL_MINOR) .*!\1 ${OPENSSL_MINOR}!" \
             "$DOCKERFILE"
