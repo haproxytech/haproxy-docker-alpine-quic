@@ -2,8 +2,8 @@
 
 DOCKER_TAG="haproxytech/haproxy-alpine-quic"
 HAPROXY_GITHUB_URL="https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main"
-HAPROXY_BRANCHES="2.6 2.8 2.9 3.0 3.1"
-HAPROXY_CURRENT_BRANCH="3.0"
+HAPROXY_BRANCHES="2.6 2.8 2.9 3.0 3.1 3.2"
+HAPROXY_CURRENT_BRANCH="3.1"
 PUSH="no"
 HAPROXY_UPDATED=""
 

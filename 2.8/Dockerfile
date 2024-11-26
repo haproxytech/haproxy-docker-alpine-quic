@@ -1,4 +1,4 @@
-FROM golang:alpine3.20 AS dataplaneapi-builder
+FROM golang:alpine AS dataplaneapi-builder
 
 ENV DATAPLANE_MINOR 3.0.3
 ENV DATAPLANE_V2_MINOR 2.9.8
@@ -15,7 +15,7 @@ RUN apk add --no-cache ca-certificates git make && \
 
 FROM alpine:3.20 AS openssl-builder
 
-ENV OPENSSL_URL https://github.com/quictls/openssl/archive/refs/tags/openssl-3.1.7-quic1.tar.gz
+ENV OPENSSL_URL https://github.com/quictls/openssl/archive/refs/tags/openssl-3.3.0-quic1.tar.gz
 
 RUN apk add --no-cache curl build-base make autoconf automake gcc libc-dev linux-headers && \
     curl -sfSL "${OPENSSL_URL}" -o openssl.tar.gz && \
