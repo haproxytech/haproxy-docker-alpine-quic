@@ -1,7 +1,7 @@
 # Supported tags and respective `Dockerfile` links
 
 -	[`3.3-dev0`, `3.3`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/3.3/Dockerfile)
--	[`3.2.0`, `3.2`, `latest`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/3.2/Dockerfile)
+-	[`3.2.0`, `3.2`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/3.2/Dockerfile)
 -	[`3.1.7`, `3.1`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/3.1/Dockerfile)
 -	[`3.0.10`, `3.0`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/3.0/Dockerfile)
 -	[`2.9.15`, `2.9`](https://github.com/haproxytech/haproxy-docker-alpine-quic/blob/main/2.9/Dockerfile)
@@ -89,13 +89,11 @@ Note that your host's `/path/to/etc/haproxy` folder should be populated with a f
 
 ## Reloading config
 
-To be able to reload HAProxy configuration, you can send `SIGHUP` to the container:
+To be able to reload HAProxy configuration, you can send `SIGUSR2` to the container:
 
 ```console
-$ docker kill -s HUP my-running-haproxy
+$ docker kill -s USR2 my-running-haproxy
 ```
-
-To achieve seamless reloads it is required to use `expose-fd listeners` and socket transfers which are not enabled by default. More on this topic is in the blog post [Truly Seamless Reloads with HAProxy](https://www.haproxy.com/blog/truly-seamless-reloads-with-haproxy-no-more-hacks/).
 
 ## Enable Data Plane API
 
